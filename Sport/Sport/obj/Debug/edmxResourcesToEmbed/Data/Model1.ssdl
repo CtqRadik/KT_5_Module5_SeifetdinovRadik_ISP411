@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище SportModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Gender">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="GenderName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TypeVisit">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="TypeVisitName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Series" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Number" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DateBorn" Type="date" Nullable="false" />
+    <Property Name="LastVisit" Type="datetime" />
+    <Property Name="TypeVisitId" Type="int" />
+    <Property Name="GenderId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_User_Gender">
+    <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="GenderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_TypeVisit">
+    <End Role="TypeVisit" Type="Self.TypeVisit" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeVisit">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="TypeVisitId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище SportModelContainer">
+    <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TypeVisit" EntityType="Self.TypeVisit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_User_Gender" Association="Self.FK_User_Gender">
+      <End Role="Gender" EntitySet="Gender" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_TypeVisit" Association="Self.FK_User_TypeVisit">
+      <End Role="TypeVisit" EntitySet="TypeVisit" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

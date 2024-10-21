@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище SportModelContainer" CdmEntityContainer="SportEntities">
+    <EntitySetMapping Name="Gender">
+      <EntityTypeMapping TypeName="SportModel.Gender">
+        <MappingFragment StoreEntitySet="Gender">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="GenderName" ColumnName="GenderName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Role">
+      <EntityTypeMapping TypeName="SportModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeVisit">
+      <EntityTypeMapping TypeName="SportModel.TypeVisit">
+        <MappingFragment StoreEntitySet="TypeVisit">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TypeVisitName" ColumnName="TypeVisitName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="SportModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Series" ColumnName="Series" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="DateBorn" ColumnName="DateBorn" />
+          <ScalarProperty Name="LastVisit" ColumnName="LastVisit" />
+          <ScalarProperty Name="TypeVisitId" ColumnName="TypeVisitId" />
+          <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
